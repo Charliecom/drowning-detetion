@@ -1,5 +1,4 @@
 [core]
     remote = storage
 ['remote "storage"']
-    url = gdrive://1svjETF__EybNzqmJ3hqios4smG2YUHn-
-    gdrive_acknowledge_abuse = true
+    url = /mnt/data/drowning-dataset
