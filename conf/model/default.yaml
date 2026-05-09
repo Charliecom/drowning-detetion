@@ -1,0 +1,3 @@
+# @package _global_.model
+
+model: resnet18
