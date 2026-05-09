@@ -1,1 +1,1 @@
-TODO add pre-commit-config.yaml
+TODO install lightning and torch compatitible with my GPU
