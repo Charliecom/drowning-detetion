@@ -6,4 +6,7 @@ readme = "README.md"
 requires-python = ">=3.12"
 dependencies = [
     "dvc[gdrive]>=3.67.1",
+    "pre-commit>=4.6.0",
+    "prettier>=0.0.7",
+    "ruff>=0.15.12",
 ]
