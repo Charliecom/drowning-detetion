@@ -22,7 +22,8 @@ def build_transforms(split: str, height: int, width: int) -> A.Compose:
         bbox_params=A.BboxParams(
             format="yolo",
             label_fields=["class_labels"],
-            min_visibility=0.3,
+            min_visibility=0,
             min_area=0.0,
+            clip=True,
         ),
     )

@@ -115,15 +115,6 @@ class AFODataset(Dataset):
 class AFODataModule(L.LightningDataModule):
     """LightningDataModule wrapping the AFO detection dataset.
 
-    Expects the AFO directory structure::
-
-        PART_1/PART_1/
-            images/
-            6categories/
-            train.txt
-            test.txt
-            validation.txt
-
     Args:
         data_root: Path to the root data directory (e.g. ``AFO/PART_1/PART_1``).
         batch_size: Samples per batch.
