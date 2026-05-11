@@ -133,42 +133,47 @@ class AFODataModule(L.LightningDataModule):
         width: int = 1024,
     ) -> None:
         super().__init__()
-        self.save_hyperparameters()
+        self.data_root = data_root
+        self.batch_size = batch_size
+        self.num_workers = num_workers
+        self.height = height
+        self.width = width
         self.split_files = {
             "train": "train",
             "val": "validation",
             "test": "test",
         }
+        self.save_hyperparameters()
 
     def setup(self, stage: str | None = None) -> None:
         if stage in ("fit", None):
             self.train_ds = AFODataset(
-                dir_path=self.hparams.data_root,
-                split=self.split_files["train"],
-                height=self.hparams.height,
-                width=self.hparams.width,
+                dir_path=self.data_root,
+                split="train",
+                height=self.height,
+                width=self.width,
             )
             self.val_ds = AFODataset(
-                dir_path=self.hparams.data_root,
-                split=self.split_files["val"],
-                height=self.hparams.height,
-                width=self.hparams.width,
+                dir_path=self.data_root,
+                split="validation",
+                height=self.height,
+                width=self.width,
             )
 
         if stage in ("test", None):
             self.test_ds = AFODataset(
-                dir_path=self.hparams.data_root,
-                split=self.split_files["test"],
-                height=self.hparams.height,
-                width=self.hparams.width,
+                dir_path=self.data_root,
+                split="test",
+                height=self.height,
+                width=self.width,
             )
 
     def train_dataloader(self) -> DataLoader:
         return DataLoader(
             self.train_ds,
-            batch_size=self.hparams.batch_size,
+            batch_size=self.batch_size,
             shuffle=True,
-            num_workers=self.hparams.num_workers,
+            num_workers=self.num_workers,
             pin_memory=True,
             drop_last=True,
             collate_fn=self._collate_fn,
@@ -177,9 +182,9 @@ class AFODataModule(L.LightningDataModule):
     def val_dataloader(self) -> DataLoader:
         return DataLoader(
             self.val_ds,
-            batch_size=self.hparams.batch_size,
+            batch_size=self.batch_size,
             shuffle=False,
-            num_workers=self.hparams.num_workers,
+            num_workers=self.num_workers,
             pin_memory=True,
             collate_fn=self._collate_fn,
         )
@@ -187,9 +192,9 @@ class AFODataModule(L.LightningDataModule):
     def test_dataloader(self) -> DataLoader:
         return DataLoader(
             self.test_ds,
-            batch_size=self.hparams.batch_size,
+            batch_size=self.batch_size,
             shuffle=False,
-            num_workers=self.hparams.num_workers,
+            num_workers=self.num_workers,
             pin_memory=True,
             collate_fn=self._collate_fn,
         )

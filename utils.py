@@ -18,7 +18,7 @@ def build_transforms(split: str, height: int, width: int) -> A.Compose:
         ] + transforms_list
 
     return A.Compose(
-        transforms_list,
+        transforms_list,  # type: ignore
         bbox_params=A.BboxParams(
             format="yolo",
             label_fields=["class_labels"],
