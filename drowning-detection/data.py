@@ -4,7 +4,7 @@ import numpy as np
 from pathlib import Path
 from torch.utils.data import Dataset, DataLoader
 from PIL import Image
-from utils import build_transforms
+from myutils import build_transforms
 
 
 def idx_to_name(idx):
@@ -38,8 +38,8 @@ class AFODataset(Dataset):
         self,
         dir_path: str | Path,
         split: str,
-        height: int = 512,
-        width: int = 1024,
+        height: int = 640,
+        width: int = 640,
     ) -> None:
         super().__init__()
         self.transforms = build_transforms(split, height, width)
@@ -121,7 +121,6 @@ class AFODataModule(L.LightningDataModule):
         num_workers: DataLoader worker processes.
         height: Resize height in pixels.
         width: Resize width in pixels.
-        max_samples: Cap each split at this many samples. ``None`` uses all.
     """
 
     def __init__(
@@ -129,8 +128,8 @@ class AFODataModule(L.LightningDataModule):
         data_root: str,
         batch_size: int = 8,
         num_workers: int = 4,
-        height: int = 512,
-        width: int = 1024,
+        height: int = 640,
+        width: int = 640,
     ) -> None:
         super().__init__()
         self.data_root = data_root

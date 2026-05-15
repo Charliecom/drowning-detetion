@@ -6,8 +6,9 @@ def build_transforms(split: str, height: int, width: int) -> A.Compose:
     transforms_list = [
         A.Resize(height=height, width=width),
         A.Normalize(
-            mean=(0.485, 0.456, 0.406),
-            std=(0.229, 0.224, 0.225),
+            mean=(0.0, 0.0, 0.0),
+            std=(1.0, 1.0, 1.0),
+            max_pixel_value=255.0,
         ),
         ToTensorV2(),
     ]
