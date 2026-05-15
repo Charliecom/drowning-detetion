@@ -1,0 +1,5 @@
+outs:
+- md5: 5c32c31bc764f8b71551df7e627671c2
+  size: 5562759
+  hash: md5
+  path: yolov5nu.pt
