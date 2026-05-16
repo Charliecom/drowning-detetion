@@ -1,11 +1,10 @@
-import mlflow  # noqa: F401
 import hydra
 from model import MyModel
 from data import AFODataModule
 import lightning as L
 from omegaconf import DictConfig
 from lightning.pytorch.callbacks import ModelCheckpoint, LearningRateMonitor
-from pytorch_lightning.loggers import MLFlowLogger
+from lightning.pytorch.loggers import MLFlowLogger
 
 
 @hydra.main(config_path="../conf", config_name="config", version_base=None)
