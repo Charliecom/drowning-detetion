@@ -4,4 +4,4 @@
     url = /mnt/data/drowning-dataset
 ['remote "mys3storage"']
     url = s3://afo-dataset/data
-    endpointurl = https://yandexcloud.net
+    endpointurl = https://storage.yandexcloud.net
