@@ -12,3 +12,4 @@ wheels/
 # manual
 outputs/
 test.ipynb
+mlruns

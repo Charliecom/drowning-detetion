@@ -41,9 +41,6 @@ class MyModel(L.LightningModule):
         self.model.args = IterableSimpleNamespace(box=7.5, cls=0.5, dfl=1.5)
 
         self.criterion = None
-        # print("criterion device", self.criterion.device)
-        print("model device", next(self.model.model.parameters()).device)
-        print("head device", next(self.model.model[-1].cv2.parameters()).device)
 
         self.val_map = MeanAveragePrecision(box_format="xyxy", iou_type="bbox")
 
@@ -71,10 +68,38 @@ class MyModel(L.LightningModule):
         preds = self.model(imgs)
         loss, loss_items = self.criterion(preds, yolo_batch)
 
-        self.log("train/box_loss", loss[0], prog_bar=True, batch_size=imgs.shape[0])
-        self.log("train/cls_loss", loss[1], prog_bar=True, batch_size=imgs.shape[0])
-        self.log("train/dfl_loss", loss[2], prog_bar=True, batch_size=imgs.shape[0])
-        self.log("train/loss", loss.mean(), prog_bar=True, batch_size=imgs.shape[0])
+        self.log(
+            "train/box_loss",
+            loss[0],
+            prog_bar=True,
+            on_step=True,
+            on_epoch=True,
+            batch_size=imgs.shape[0],
+        )
+        self.log(
+            "train/cls_loss",
+            loss[1],
+            prog_bar=True,
+            on_step=True,
+            on_epoch=True,
+            batch_size=imgs.shape[0],
+        )
+        self.log(
+            "train/dfl_loss",
+            loss[2],
+            prog_bar=True,
+            on_step=True,
+            on_epoch=True,
+            batch_size=imgs.shape[0],
+        )
+        self.log(
+            "train/loss",
+            loss.mean(),
+            prog_bar=True,
+            on_step=True,
+            on_epoch=True,
+            batch_size=imgs.shape[0],
+        )
         return loss.mean()
 
     def _postprocess_preds(self, raw_preds, img_shape, conf_thres=0.001, iou_thres=0.6):
@@ -172,8 +197,10 @@ class MyModel(L.LightningModule):
         mAP_50_95 = metrics["map"].item()
         mAP_50 = metrics["map_50"].item()
 
-        self.log("val/mAP_50_95", mAP_50_95, prog_bar=True, sync_dist=True)
-        self.log("val/mAP_50", mAP_50, prog_bar=True, sync_dist=True)
+        self.log(
+            "val/mAP_50_95", mAP_50_95, on_epoch=True, prog_bar=True, sync_dist=True
+        )
+        self.log("val/mAP_50", mAP_50, on_epoch=True, prog_bar=True, sync_dist=True)
 
         self.val_map.reset()
 

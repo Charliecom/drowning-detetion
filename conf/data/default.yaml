@@ -1,8 +1,7 @@
 # @package _global_.data
 
-batch_size: 128
+batch_size: 32
 height: 640
 width: 640
 dir_path: /home/cqss0/ML/drowning-detection/data/archive/PART_1/PART_1
-targets_path: /home/cqss0/ML/drowning-detection/data/archive/PART_1/PART_1/6categories
-num_workers: 8
+num_workers: 5
