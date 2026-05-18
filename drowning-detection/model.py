@@ -45,7 +45,7 @@ class MyModel(L.LightningModule):
         self.val_map = MeanAveragePrecision(box_format="xyxy", iou_type="bbox")
 
     def training_step(self, batch, batch_idx=0):
-        if self.criterion == None:
+        if self.criterion is None:
             self.criterion = v8DetectionLoss(self.model)
 
         imgs = batch["image"]

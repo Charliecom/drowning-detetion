@@ -13,8 +13,13 @@ repos:
     rev: v0.15.2
     hooks:
       - id: ruff-check
-        args: [--diff]
-        # exclude: jupyterhub-demo/
+        args: [--fix, --show-fixes]
+
       - id: ruff-format
+        alias: ruff-format-diff
+        name: ruff-format (show diff)
         args: [--diff]
-        # exclude: jupyterhub-demo/
+        verbose: true
+
+      - id: ruff-format
+        name: ruff-format (apply fixes)
