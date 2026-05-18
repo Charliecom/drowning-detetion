@@ -1,6 +1,6 @@
 # @package _global_.train
 
-max_epochs: 3
+max_epochs: 10
 learning_rate: 1e-3
 weight_decay: 5e-4
 ckpt_path: checkpoints

@@ -103,10 +103,7 @@ class MyModel(L.LightningModule):
         return loss.mean()
 
     def _postprocess_preds(self, raw_preds, img_shape, conf_thres=0.001, iou_thres=0.6):
-        """
-        Декодирует координаты и применяет Batched NMS к выходу YOLOv8.
-        raw_preds: tuple, где raw_preds[0] имеет форму [B, 4 + num_classes, 8400]
-        """
+        """Декодирует координаты и применяет Batched NMS к выходу YOLO."""
         preds = raw_preds[0]
 
         batch_size = preds.shape[0]
@@ -203,6 +200,18 @@ class MyModel(L.LightningModule):
         self.log("val/mAP_50", mAP_50, on_epoch=True, prog_bar=True, sync_dist=True)
 
         self.val_map.reset()
+
+    def predict_step(self, batch: dict, batch_idx: int = 0) -> list[dict]:
+        """Шаг инференса. Возвращает NMS-предсказания с абсолютными координатами боксов."""
+        imgs = batch["image"]
+
+        raw_preds = self.model(imgs)
+
+        predictions = self._postprocess_preds(
+            raw_preds, img_shape=imgs.shape, conf_thres=0.25, iou_thres=0.45
+        )
+
+        return predictions
 
     def configure_optimizers(self):
         return torch.optim.AdamW(

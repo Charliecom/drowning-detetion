@@ -1,1 +1,6 @@
-# @package _global_.infer
+# @package _global_.inference
+
+checkpoint: checkpoints/best.ckpt
+input: data/archive/PART_1/PART_1/images/a_101.jpg
+output_dir: inference_results
+device: auto

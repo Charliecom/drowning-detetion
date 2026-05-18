@@ -13,3 +13,6 @@ wheels/
 outputs/
 test.ipynb
 mlruns
+checkpoints/
+drowning-detection/lightning_logs
+inference_results
