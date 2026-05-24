@@ -124,6 +124,9 @@ uv run dvc pull
 
 ## Train
 
+Предварительно запустить mlflow
+uv run mlflow ui --host 127.0.0.1 --port 8080
+
 uv run drowning-detection/train.py  
 Конфигурация обучения производиться в файле conf/train/default.yaml
 
