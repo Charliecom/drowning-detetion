@@ -116,10 +116,10 @@ Val: 13,48%
 
 git clone https://github.com/Charliecom/drowning-detetion.git  
 uv sync --no-dev  
-dvc remote modify --local data_storage access_key_id YCAJEkuX-ExbnQ0opND0pc4vf  
-dvc remote modify --local data_storage secret_access_key YCMIMF9sa1cO5eIusjLvGVt-ARWkICCnLUnEIEcm  
-dvc remote modify --local model_storage access_key_id YCAJEkuX-ExbnQ0opND0pc4vf  
-dvc remote modify --local model_storage secret_access_key YCMIMF9sa1cO5eIusjLvGVt-ARWkICCnLUnEIEcm  
+uv run dvc remote modify --local data_storage access_key_id YCAJEkuX-ExbnQ0opND0pc4vf  
+uv run dvc remote modify --local data_storage secret_access_key YCMIMF9sa1cO5eIusjLvGVt-ARWkICCnLUnEIEcm  
+uv run dvc remote modify --local model_storage access_key_id YCAJEkuX-ExbnQ0opND0pc4vf  
+uv run dvc remote modify --local model_storage secret_access_key YCMIMF9sa1cO5eIusjLvGVt-ARWkICCnLUnEIEcm  
 uv run dvc pull
 
 ## Train
