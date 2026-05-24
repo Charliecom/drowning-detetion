@@ -11,7 +11,7 @@ from torchmetrics.detection import MeanAveragePrecision
 class MyModel(L.LightningModule):
     def __init__(
         self,
-        model_path: str = "/home/cqss0/ML/drowning-detection/data/yolov5nu.pt",
+        model_path: str = "/home/cqss0/ML/drowning-detection/checkpoints/yolov5nu.pt",
         num_classes: int = 6,
         learning_rate: float = 1e-3,
         weight_decay: float = 5e-4,
@@ -29,7 +29,10 @@ class MyModel(L.LightningModule):
         self.model = yolo.model  # <class 'ultralytics.nn.tasks.DetectionModel'>
 
         old_detect = self.model.model[-1]
-        new_detect = Detect(nc=num_classes, ch=(64, 128, 256))
+        ch1 = old_detect.cv2[0][0].conv.in_channels
+        ch2 = old_detect.cv2[1][0].conv.in_channels
+        ch3 = old_detect.cv2[2][0].conv.in_channels
+        new_detect = Detect(nc=num_classes, ch=(ch1, ch2, ch3))
 
         new_detect.f = old_detect.f
         new_detect.i = old_detect.i

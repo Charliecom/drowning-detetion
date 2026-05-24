@@ -7,7 +7,7 @@ import torch
 from omegaconf import DictConfig
 from PIL import Image, ImageDraw
 from tqdm import tqdm
-from myutils import build_transforms
+from myutils import build_transforms, pull_dvc_data
 
 from model import MyModel
 
@@ -46,6 +46,7 @@ def draw_predictions_on_image(
 
 @hydra.main(config_path="../conf", config_name="config", version_base=None)
 def run(cfg: DictConfig) -> None:
+    pull_dvc_data()
     device = (
         torch.device("cuda" if torch.cuda.is_available() else "cpu")
         if cfg.inference.device == "auto"

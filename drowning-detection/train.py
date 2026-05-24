@@ -5,10 +5,12 @@ import lightning as L
 from omegaconf import DictConfig
 from lightning.pytorch.callbacks import ModelCheckpoint, LearningRateMonitor
 from lightning.pytorch.loggers import MLFlowLogger
+from myutils import pull_dvc_data
 
 
 @hydra.main(config_path="../conf", config_name="config", version_base=None)
 def train(cfg: DictConfig):
+    pull_dvc_data()
     L.seed_everything(cfg.train.seed)
 
     dt = AFODataModule(
@@ -35,12 +37,8 @@ def train(cfg: DictConfig):
             monitor="val/mAP_50",
             save_top_k=1,
             mode="max",
-        ),
-        ModelCheckpoint(
-            dirpath=cfg.train.ckpt_path,
-            filename="last",
-            save_top_k=1,
-            every_n_epochs=1,
+            save_last=True,
+            enable_version_counter=False,
         ),
         LearningRateMonitor(logging_interval="epoch"),
     ]

@@ -1,0 +1,7 @@
+outs:
+- md5: 177a384e9549fab0d441f8e89466e7a8.dir
+  size: 57699643
+  nfiles: 2
+  hash: md5
+  path: checkpoints
+  remote: model_storage

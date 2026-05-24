@@ -1,0 +1,9 @@
+[core]
+    remote = data_storage
+    autostage = true
+['remote "data_storage"']
+    url = s3://afo-dataset/data
+    endpointurl = https://storage.yandexcloud.net
+['remote "model_storage"']
+    url = s3://afo-dataset/models
+    endpointurl = https://storage.yandexcloud.net

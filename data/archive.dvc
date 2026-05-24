@@ -4,3 +4,4 @@ outs:
   nfiles: 14570
   hash: md5
   path: archive
+  remote: data_storage

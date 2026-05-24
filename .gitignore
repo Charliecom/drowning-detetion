@@ -227,3 +227,5 @@ checkpoints/
 drowning-detection/lightning_logs
 inference_results
 .vscode
+/checkpoints
+mlflow.db

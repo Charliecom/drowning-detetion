@@ -1,5 +1,27 @@
 import albumentations as A
 from albumentations.pytorch import ToTensorV2
+from dvc.repo import Repo as DvcRepo
+
+
+def pull_dvc_data(
+    path: str | None = None,
+    dvc_root: str = ".",
+    remote: str | None = None,
+    allow_missing: bool = False,
+    force: bool = False,
+) -> None:
+    repo = DvcRepo(dvc_root)
+
+    targets = [path] if path else []
+
+    repo.pull(
+        targets=targets,
+        remote=remote,
+        allow_missing=allow_missing,
+        force=force,
+    )
+
+    print(f"DVC data pulled from remote='{remote}' for path='{path or '.'}'")
 
 
 def build_transforms(split: str, height: int, width: int) -> A.Compose:
