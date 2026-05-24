@@ -124,7 +124,7 @@ uv run dvc pull
 
 ## Train
 
-Предварительно запустить mlflow
+Предварительно запустить mlflow  
 uv run mlflow ui --host 127.0.0.1 --port 8080
 
 uv run drowning-detection/train.py  
