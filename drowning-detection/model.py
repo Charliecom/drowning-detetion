@@ -72,7 +72,7 @@ class MyModel(L.LightningModule):
             "train/box_loss",
             loss[0],
             prog_bar=True,
-            on_step=True,
+            on_step=False,
             on_epoch=True,
             batch_size=imgs.shape[0],
         )
@@ -80,7 +80,7 @@ class MyModel(L.LightningModule):
             "train/cls_loss",
             loss[1],
             prog_bar=True,
-            on_step=True,
+            on_step=False,
             on_epoch=True,
             batch_size=imgs.shape[0],
         )
@@ -88,7 +88,7 @@ class MyModel(L.LightningModule):
             "train/dfl_loss",
             loss[2],
             prog_bar=True,
-            on_step=True,
+            on_step=False,
             on_epoch=True,
             batch_size=imgs.shape[0],
         )
