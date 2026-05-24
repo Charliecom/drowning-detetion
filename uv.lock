@@ -913,8 +913,6 @@ dependencies = [
     { name = "albumentations" },
     { name = "dvc", extra = ["s3"] },
     { name = "hydra-core" },
-    { name = "ipykernel" },
-    { name = "ipywidgets" },
     { name = "lightning" },
     { name = "mlflow" },
     { name = "pandas" },
@@ -934,13 +932,17 @@ dependencies = [
     { name = "ultralytics" },
 ]
 
+[package.dev-dependencies]
+dev = [
+    { name = "ipykernel" },
+    { name = "ipywidgets" },
+]
+
 [package.metadata]
 requires-dist = [
     { name = "albumentations", specifier = ">=2.0.8" },
     { name = "dvc", extras = ["s3"], specifier = ">=3.67.1" },
     { name = "hydra-core", specifier = ">=1.3.2" },
-    { name = "ipykernel", specifier = ">=7.2.0" },
-    { name = "ipywidgets", specifier = ">=8.1.8" },
     { name = "lightning", specifier = ">=2.6.1" },
     { name = "mlflow", specifier = ">=3.0.0" },
     { name = "pandas", specifier = "<3" },
@@ -958,6 +960,12 @@ requires-dist = [
     { name = "torchvision", marker = "sys_platform == 'linux' or sys_platform == 'win32'", specifier = ">=0.26.0", index = "https://download.pytorch.org/whl/cu126" },
     { name = "tqdm", specifier = ">=4.67.3" },
     { name = "ultralytics", specifier = ">=8.4.48" },
+]
+
+[package.metadata.requires-dev]
+dev = [
+    { name = "ipykernel", specifier = ">=7.2.0" },
+    { name = "ipywidgets", specifier = ">=8.1.8" },
 ]
 
 [[package]]
