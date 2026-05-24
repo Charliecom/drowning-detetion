@@ -1,10 +1,10 @@
 # @package _global_.train
 
-max_epochs: 10
+max_epochs: 20
 learning_rate: 1e-3
 weight_decay: 5e-4
 ckpt_path: checkpoints
-warmup_epochs: 0
+warmup_epochs: 4
 seed: 42
 num_classes: 6
 resume: null
