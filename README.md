@@ -115,7 +115,7 @@ Val: 13,48%
 Должен присутствовать раздел Setup, где описывается процедура настройки окружения вашего проекта. Мы обсуждали множество различных вариантов (poetry, conda, uv и множество других развилок). Ваша инструкция должна привести к возможности продолжить разработку, а также запустить обучение и предсказание вашей модели. То есть должны быть настроены все необходимые инструменты.
 
 git clone https://github.com/Charliecom/drowning-detetion.git  
-uv sync --no-dev
+uv sync --no-dev  
 dvc remote modify --local data_storage access_key_id YCAJEkuX-ExbnQ0opND0pc4vf  
 dvc remote modify --local data_storage secret_access_key YCMIMF9sa1cO5eIusjLvGVt-ARWkICCnLUnEIEcm  
 dvc remote modify --local model_storage access_key_id YCAJEkuX-ExbnQ0opND0pc4vf  
