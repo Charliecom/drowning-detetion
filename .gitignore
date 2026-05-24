@@ -229,3 +229,4 @@ inference_results
 .vscode
 /checkpoints
 mlflow.db
+node_modules
