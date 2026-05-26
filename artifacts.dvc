@@ -1,0 +1,7 @@
+outs:
+- md5: 916bbda49951e543908d572bd3a88218.dir
+  size: 94904925
+  nfiles: 2
+  hash: md5
+  path: artifacts
+  remote: model_storage

@@ -1,0 +1,8 @@
+# @package _global_.onnx
+
+seed: 42
+atol: 1e-4
+rtol: 1e-4
+img_size: 640
+checkpoint_path: /home/cqss0/ML/drowning-detection/checkpoints/best.ckpt
+onnx_path: /home/cqss0/ML/drowning-detection/artifacts/mymodel.onnx

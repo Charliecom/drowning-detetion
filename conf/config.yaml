@@ -3,4 +3,5 @@ defaults:
   - model: default
   - train: default
   - infer: default
+  - onnx: default
   - _self_

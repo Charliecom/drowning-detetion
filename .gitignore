@@ -230,3 +230,4 @@ inference_results
 /checkpoints
 mlflow.db
 node_modules
+/artifacts
