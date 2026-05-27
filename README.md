@@ -146,3 +146,8 @@ uv run drowning-detection/train.py
 Для того, чтобы запустить инференс выполнить команду  
 uv run drowning-detection/infer.py  
 Конфигурация инференса (путь до изображений, путь до выхода модели, device, путь до checkpoint) осуществляется в файле conf/infer/default.yaml
+
+## Onnx conversion
+
+uv run drowning-detection/onnx_export.py  
+Конфигурация запуска в conf/onnx/default.yaml
